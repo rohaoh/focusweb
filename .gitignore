@@ -12,3 +12,9 @@ build/
 # 운영체제 관련 파일
 .DS_Store
 Thumbs.db
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
