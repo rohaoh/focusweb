@@ -1,0 +1,126 @@
+/* src/pages/FocusPage.module.css */
+
+.page {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #1a2035 0%, #0e0f13 70%);
+  margin: -32px;  /* content padding 상쇄 */
+  padding: 32px;
+}
+
+.inner {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  animation: fadeIn 0.4s ease;
+}
+
+.header { text-align: center; }
+.title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+}
+.taskName {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  margin-top: 6px;
+  max-width: 320px;
+}
+
+/* 할 일 선택 */
+.selector { width: 100%; }
+.selectorLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+/* 원형 타이머 */
+.timerWrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+.timerSvg {
+  width: 100%;
+  height: 100%;
+}
+.timerText {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.clockStr {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.clockSub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+}
+
+/* 통계 */
+.statsRow {
+  display: flex;
+  gap: 24px;
+}
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.statLabel { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+.statValue { font-size: 1rem; font-weight: 600; color: rgba(255,255,255,0.85); }
+
+/* 컨트롤 */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.mainBtn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.startBtn {
+  background: linear-gradient(135deg, #578bff, #4dd9c8);
+  color: white;
+}
+.startBtn:hover { opacity: 0.9; transform: translateY(-1px); }
+.pauseBtn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.pauseBtn:hover { background: rgba(255,255,255,0.13); }
+
+@media (max-width: 768px) {
+  .page { margin: -20px -16px; padding: 20px 16px; }
+}

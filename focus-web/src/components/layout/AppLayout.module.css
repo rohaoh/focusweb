@@ -1,0 +1,138 @@
+/* src/components/layout/AppLayout.module.css */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── 사이드바 (데스크톱) ── */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0; top: 0;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  z-index: 50;
+}
+
+.sidebarTop { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+.sidebarBottom { display: flex; flex-direction: column; gap: 10px; }
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0 8px;
+}
+
+.nav { display: flex; flex-direction: column; gap: 4px; }
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.18s;
+}
+.navItem:hover { background: var(--bg-card); color: var(--text-primary); }
+.navItem.active { background: rgba(74,124,255,0.12); color: var(--accent); }
+.navIcon { font-size: 1.1rem; }
+
+/* 유저 정보 */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.userMeta { display: flex; flex-direction: column; min-width: 0; }
+.userName { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.userEmail { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── 메인 콘텐츠 ── */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 32px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── 모바일 헤더 (사이드바 숨김) ── */
+.mobileHeader {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 56px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.mobileNav {
+  display: flex;
+  gap: 4px;
+}
+
+.mobileNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  transition: all 0.18s;
+}
+.mobileNavItem:hover, .mobileNavItem.active { color: var(--accent); }
+.mobileNavLabel { font-size: 0.65rem; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .mobileHeader { display: flex; }
+  .main { margin-left: 0; }
+  .content { padding: 20px 16px; }
+}

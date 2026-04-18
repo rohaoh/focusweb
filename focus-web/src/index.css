@@ -1,0 +1,184 @@
+/* src/index.css */
+/* Focus 웹앱 디자인 시스템 */
+/* 앱의 어두운 테마를 기반으로 웹에 맞게 재해석 */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 앱의 default 테마 색상 */
+  --bg-primary: #0e0f13;
+  --bg-secondary: #16181f;
+  --bg-card: #1c1f29;
+  --bg-card-hover: #22263a;
+  --border: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.15);
+
+  /* 텍스트 */
+  --text-primary: #f0f1f5;
+  --text-secondary: #8a8fa8;
+  --text-muted: #4a4f66;
+
+  /* 앱 accent 색상 (파란색 계열) */
+  --accent: #4a7cff;
+  --accent-secondary: #5ac8fa;
+  --accent-gradient: linear-gradient(135deg, #4a7cff, #5ac8fa);
+
+  /* 상태 색상 */
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
+  /* 집중 타이머 색상 (앱과 동일) */
+  --focus-bg-start: #12141e;
+  --focus-bg-end: #1a2035;
+  --focus-ring: linear-gradient(135deg, #578bff, #4dd9c8);
+
+  /* 폰트 */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* 반응형 */
+  --sidebar-width: 240px;
+  --header-height: 60px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+
+/* 공통 버튼 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--bg-card); color: var(--text-primary); border-color: var(--border-hover); }
+
+.btn-danger {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--danger);
+  border: 1px solid rgba(248,113,113,0.2);
+}
+.btn-danger:hover { background: rgba(248,113,113,0.25); }
+
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-sm { padding: 6px 14px; font-size: 0.82rem; border-radius: 8px; }
+.btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: 16px; }
+
+/* 카드 */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  transition: border-color 0.18s;
+}
+.card:hover { border-color: var(--border-hover); }
+
+/* 입력 필드 */
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.input:focus { border-color: var(--accent); }
+.input::placeholder { color: var(--text-muted); }
+
+/* 배지 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-accent { background: rgba(74,124,255,0.15); color: var(--accent); }
+.badge-success { background: rgba(52,211,153,0.15); color: var(--success); }
+.badge-warning { background: rgba(251,191,36,0.15); color: var(--warning); }
+.badge-danger { background: rgba(248,113,113,0.15); color: var(--danger); }
+
+/* 로딩 스피너 */
+.spinner {
+  width: 24px; height: 24px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+/* 유틸리티 */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.w-full { width: 100%; }
+.text-center { text-align: center; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.font-bold { font-weight: 700; }
+.opacity-60 { opacity: 0.6; }
+
+/* 반응형 모바일 */
+@media (max-width: 768px) {
+  :root { --sidebar-width: 0px; }
+}
